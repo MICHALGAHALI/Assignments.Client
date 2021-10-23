@@ -1,27 +1,40 @@
-# Assignmentsapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
+## תרגיל – מערכת משימות \Assignments 
 
-## Development server
+# תיאור התרגיל:
+נרצה לבנות מערכת ניהול משימות. המערכת תציג רשימת משימות, וכמו כן תאפשר יצירה, עדכון, או מחיקה של משימה.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Assignments.Client – דגשים
+ # 1.	יש להשתמש בספריה של PrimeNg עבור כל רכיבי ה- UI.
+# 2.	נרצה לבנות את המסכים:
 
-## Code scaffolding
+-	מסך טבלת המשימות (grid) הרלוונטיות הקיימות:
+-	יש לבנות את העמודות באופן הבא:
+•	מזהה ייחודי של משימה 
+•	סוג משימה
+•	שם המשימה
+•	תיאור המשימה
+•	תאריך התחלה
+•	תאריך סיום
+•	האם משימה חוזרת
+•	Checkbox עבור סימון האם משימה הסתיימה
+•	כפתור עדכון הסטטוס לפי ה- checkbox.
+•	כפתור מחיקת משימה
+-	במסך זה יש לכלול, מעל הטבלה, כפתור אשר יוביל למסך יצירת בקשה חדשה. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-	מסך טופס יצירת משימה חדשה:
+-	יש לכלול כפתור חזרה למסך הקודם (מסך הטבלה)
+-	יש לכלול טופס יצירת בקשה, כולל שימוש ב- Reactive Forms + Validation בהתאם לדרישה. 
+-	יש להשתמש ברכיבי text, date ו – dropdown עבור שדות בחירה.
 
-## Build
+להגדרת המשימה.
+-	יש לכלול כפתור Submit בסוף הטופס, שיתאפשר בלחיצה רק כשעוברים Validation.
+-	לאחר לחיצה על כפתור submit, נרצה לחזור למסך טבלת המשימות ולראות את הבקשה.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# 3.	דגשים:
+-	שימוש ב- RxJs.
+-	פנייה ל- API
+-	שימוש בספריית PrimeNg
+-	שימוש ביכולות Typescript
+-	אין צורך להשקיע בעיצוב. מספיק מבנה מסודר וברור.
+בונוס: בנוסף למיון הדיפולטיבי של הטבלה לפי סדר תאריכים יורד, נרצה לאפשר גם, בלחיצה על Header של העמודה, למין לפי אותה עמודה. לדוגמא: לחיצה על העמודה "שם המשימה" תמיין בסדר עולה, ולחיצה נוספת תמיין בסדר יורד.
