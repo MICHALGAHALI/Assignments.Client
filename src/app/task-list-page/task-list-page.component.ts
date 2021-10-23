@@ -20,7 +20,7 @@ export class TaskListPageComponent implements OnInit {
   {
     this._taskService.delete(taskId)
   }
-  changeTask(evt:any,task:Task) {
+  changeTask(task:Task) {
     var clone = Object.assign({}, task);
     clone.completed=!clone.completed
     this._taskService.update(clone);   

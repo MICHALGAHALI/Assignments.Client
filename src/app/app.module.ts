@@ -13,17 +13,24 @@ import { EffectsModule } from '@ngrx/effects';
 import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
 import {CheckboxModule} from 'primeng/checkbox';
 import { CommonModule } from '@angular/common';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
+import { TaskComponent } from './task/task.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {CalendarModule} from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown'
 @NgModule({
   declarations: [
     AppComponent,
-    TaskListPageComponent
+    TaskListPageComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({}),
@@ -37,7 +44,11 @@ import { FormsModule }    from '@angular/forms';
     }),
     TableModule,
     ButtonModule,
-    CheckboxModule
+    CheckboxModule,
+    InputTextModule,
+    CascadeSelectModule,
+    CalendarModule,
+    DropdownModule
   ],
   providers: [
     {provide:DefaultDataServiceConfig,useValue:{root:'https://jsonplaceholder.typicode.com/'}}

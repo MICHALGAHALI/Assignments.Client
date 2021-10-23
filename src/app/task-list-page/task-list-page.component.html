@@ -1,7 +1,7 @@
 <div *ngIf="task$ | async as tasks">
 <p-table [value]="tasks" styleClass="p-datatable-gridlines">
     <ng-template pTemplate="caption">
-        <button type="button" pButton label="צור משימה חדשה"></button>
+        <button [routerLink]="['/newTask']"  type="button" pButton label="צור משימה חדשה"></button>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
@@ -25,9 +25,9 @@
         <td>{{task.description}}</td>
         <td>{{task.beginDate}}</td>
         <td>{{task.endDate}}</td>
-        <td>{{task.frequency}}</td>
+        <td>{{task.isRepeated}}</td>
         <td>{{task.isDone}}</td>
-        <td><p-checkbox name="groupname" [value]="task.completed" [ngModel]="task.completed" (onChange)="changeTask($event,task)" [binary]="true"></p-checkbox></td>
+        <td><p-checkbox name="groupname" [value]="task.completed" [ngModel]="task.completed" (onChange)="changeTask(task)" [binary]="true"></p-checkbox></td>
         <td><button type="button" (click)="deleteTask(task.id)" pButton label="מחק משימה"></button></td>
       </tr>
     </ng-template>

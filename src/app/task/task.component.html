@@ -1,0 +1,45 @@
+<button [routerLink]="['/']"  type="button" pButton label="<=חזור"></button>
+
+<form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <div>
+        <span class="p-input-icon-left">            
+            <input type="text" pInputText name="title" formControlName="title" placeholder="שם משימה">         
+        </span>
+    </div>
+    <div>
+        <span class="p-input-icon-left">            
+            <p-checkbox inputId="isRepeated" name="completed" formControlName="completed" value="false" name="isRepeated" formControlName="isRepeated"></p-checkbox>
+            <label for="isRepeated">האם בוצע?</label>
+        </span>
+    </div>
+    <div>
+        <span class="p-input-icon-left">            
+            <p-dropdown   name="type" formControlName="type" placeholder="סוג משימה" optionLabel="name"  inputId="dropdown" [autoDisplayFirst]="false" [options]="countries"></p-dropdown>
+        </span>
+    </div>
+    <div>
+        <span class="p-input-icon-left">            
+            <input type="text" pInputText name="description" formControlName="description" placeholder="תיאור משימה">         
+        </span>
+    </div>
+    <div>
+        <span class="p-input-icon-left">            
+            <p-calendar inputId="calendar"  name="beginDate" formControlName="beginDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
+        </span>
+    </div>
+    <div>
+        <span class="p-input-icon-left">                        
+            <p-calendar inputId="calendar"  name="endDate" formControlName="endDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
+        </span>
+    </div>
+    <div>
+        <span class="p-input-icon-left">            
+            <p-checkbox inputId="isRepeated" name="groupname" value="false" name="isRepeated" formControlName="isRepeated"></p-checkbox>
+            <label for="isRepeated">האם משימה חוזרת?</label>
+        </span>
+    </div>
+    <br/>
+    <button pButton type="submit" [disabled]="(taskForm.status == 'PENDING' ||taskForm.status=='INVALID')"> שמור </button>
+  </form> 
+    
+
