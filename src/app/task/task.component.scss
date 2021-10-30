@@ -6,3 +6,6 @@ form{
     flex-direction:column;
     flex-wrap: wrap;
 }
+input.ng-dirty.ng-invalid {
+    border-color: red;
+  }

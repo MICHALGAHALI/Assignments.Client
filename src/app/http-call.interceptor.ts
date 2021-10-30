@@ -7,7 +7,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable()
 export class HttpCallInterceptor implements HttpInterceptor {
@@ -20,6 +20,7 @@ export class HttpCallInterceptor implements HttpInterceptor {
     })
     console.log("enter");
     return next.handle(newReq).pipe(
+      tap((a)=>{console.log(a)}),
       catchError((err) => {
         console.log(err);
          return []

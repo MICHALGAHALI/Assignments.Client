@@ -1,4 +1,4 @@
-<div *ngIf="task$ | async as tasks">
+<div *ngIf="tasks$ | async as tasks">
 <p-table [value]="tasks" styleClass="p-datatable-gridlines">
     <ng-template pTemplate="caption">
         <button [routerLink]="['/newTask']"  type="button" pButton label="צור משימה חדשה"></button>
@@ -20,14 +20,20 @@
     <ng-template pTemplate="body" let-task>
       <tr>
         <td>{{task.id}}</td>
-        <td>{{task.type}}</td>
+        <td *ngIf="typeTask$ | async as types">
+          <p-dropdown  [options]="types" name="type" [ngModel]="task.type" (onChange)="changeTypeTask($event,task)"
+          placeholder="סוג משימה" 
+          optionLabel="title"  inputId="dropdown" [autoDisplayFirst]="false" ></p-dropdown>
+
+        </td>
         <td>{{task.title}}</td>
         <td>{{task.description}}</td>
         <td>{{task.startDate|date: 'dd/MM/yyyy'}}</td>
         <td>{{task.finishDate|date: 'dd/MM/yyyy'}}</td>
         <td>{{task.isRepeated}}</td>
         <td>{{task.completed}}</td>
-        <td><p-checkbox name="groupname" [value]="task.completed" [ngModel]="task.completed" (onChange)="changeTask(task)" [binary]="true"></p-checkbox></td>
+        <td><p-checkbox name="groupname" [ngModel]="task.completed" (onChange)="changeCompletedTask($event,task)"
+            [binary]="true"></p-checkbox></td>
         <td><button type="button" (click)="deleteTask(task.id)" pButton label="מחק משימה"></button></td>
       </tr>
     </ng-template>

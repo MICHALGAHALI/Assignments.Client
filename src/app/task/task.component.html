@@ -3,40 +3,43 @@
 <form [formGroup]="taskForm" (ngSubmit)="addTask()">
     <div>
         <span class="p-input-icon-left">            
-            <input type="text" pInputText name="title" formControlName="title" placeholder="שם משימה">         
+            <input type="text" pInputText name="title" formControlName="Title" placeholder="שם משימה">         
         </span>
     </div>
     <div>
-        <span class="p-input-icon-left">            
-            <p-checkbox inputId="isRepeated" name="completed" formControlName="completed" value="false" name="isRepeated" formControlName="isRepeated"></p-checkbox>
-            <label for="isRepeated">האם בוצע?</label>
+        <span class="p-input-icon-left">   
+            <p-checkbox formControlName="Completed" [binary]="true" inputId="binary1"></p-checkbox>
+            <label for="binary1">האם משימה חוזרת?</label>                    
         </span>
     </div>
     <div>
         <span class="p-input-icon-left" *ngIf="typeTask$ | async as types">            
-            <p-dropdown  [options]="types" name="type" formControlName="type" placeholder="סוג משימה" 
+            <p-dropdown  [options]="types" name="type" formControlName="Type" placeholder="סוג משימה" 
             optionLabel="title"  inputId="dropdown" [autoDisplayFirst]="false" ></p-dropdown>
         </span>
     </div>
     <div>
         <span class="p-input-icon-left">            
-            <input type="text" pInputText name="description" formControlName="description" placeholder="תיאור משימה">         
+            <input type="text" pInputText name="description" formControlName="Description" placeholder="תיאור משימה">         
         </span>
     </div>
     <div>
         <span class="p-input-icon-left">            
-            <p-calendar inputId="calendar"  name="startDate" formControlName="startDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
+            <p-calendar inputId="calendar"  name="startDate" formControlName="StartDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
         </span>
     </div>
     <div>
         <span class="p-input-icon-left">                        
-            <p-calendar inputId="calendar"  name="finishDate" formControlName="finishDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
+            <p-calendar inputId="calendar"  name="finishDate" formControlName="FinishDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
         </span>
     </div>
     <div>
-        <span class="p-input-icon-left">            
-            <p-checkbox inputId="isRepeated" name="groupname" value="false" name="isRepeated" formControlName="isRepeated"></p-checkbox>
-            <label for="isRepeated">האם משימה חוזרת?</label>
+        <span class="p-input-icon-left"> 
+            <div class="p-field-checkbox">
+                <p-checkbox formControlName="IsRepeated" [binary]="true" inputId="binary"></p-checkbox>
+                <label for="binary">האם משימה חוזרת?</label>
+            </div>           
+         
         </span>
     </div>
     <br/>

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TaskService } from '../task.service';
 import {Task} from '../task.model'
 import { TypeService } from '../type.service';
@@ -15,15 +15,14 @@ import { TypeTask } from '../type-task.medel';
 export class TaskComponent implements OnInit {
  
   taskForm = this._formBuilder.group({
-    title:['', [Validators.required], []],
-    completed:['', []],
-    type:['', [Validators.required], []],
-    description:['', [Validators.required], []],
-    startDate:['', [Validators.required], []],
-    finishDate:['', [Validators.required], []],
-    isRepeated:['', [Validators.required], []]    
+    Title:new FormControl('',[Validators.required]),
+    Completed:new FormControl(),
+    Type:new FormControl('',[Validators.required]),
+    Description:new FormControl('',[Validators.required]),
+    StartDate:new FormControl('',[Validators.required]),
+    FinishDate:new FormControl(''),
+    IsRepeated:new FormControl()
   }); 
-  countries:any[]=[];
   typeTask$: Observable<TypeTask[]>=this._typeService.entities$;
   constructor(
     private _formBuilder: FormBuilder,
