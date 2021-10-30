@@ -23,16 +23,16 @@
         <td>{{task.type}}</td>
         <td>{{task.title}}</td>
         <td>{{task.description}}</td>
-        <td>{{task.beginDate}}</td>
-        <td>{{task.endDate}}</td>
+        <td>{{task.startDate|date: 'dd/MM/yyyy'}}</td>
+        <td>{{task.finishDate|date: 'dd/MM/yyyy'}}</td>
         <td>{{task.isRepeated}}</td>
-        <td>{{task.isDone}}</td>
+        <td>{{task.completed}}</td>
         <td><p-checkbox name="groupname" [value]="task.completed" [ngModel]="task.completed" (onChange)="changeTask(task)" [binary]="true"></p-checkbox></td>
         <td><button type="button" (click)="deleteTask(task.id)" pButton label="מחק משימה"></button></td>
       </tr>
     </ng-template>
-    <ng-template pTemplate="summary">
-      Footer
+    <ng-template pTemplate="summary" style="text-align: center;">
+     <span style="text-align: center;"><strong>create by:</strong> Michal Gahali programmer-0527156397</span>
     </ng-template>
   </p-table>
 </div>

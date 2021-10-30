@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TaskListPageComponent } from './task-list-page/task-list-page.component';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
@@ -19,6 +19,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown'
+import { HttpCallInterceptor } from './http-call.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {DropdownModule} from 'primeng/dropdown'
     EffectsModule.forRoot(),
     EntityDataModule.forRoot({
       entityMetadata: {
-        'todo': {}
+        'todo': {},
+        'type':{}
       },
       //pluralNames:{'Task':'TODO'}
     }),
@@ -50,8 +52,9 @@ import {DropdownModule} from 'primeng/dropdown'
     CalendarModule,
     DropdownModule
   ],
-  providers: [
-    {provide:DefaultDataServiceConfig,useValue:{root:'https://jsonplaceholder.typicode.com/'}}
+  providers: [//https://jsonplaceholder.typicode.com/
+    {provide:DefaultDataServiceConfig,useValue:{root:'http://localhost:5000/api/'}},
+    {provide:HTTP_INTERCEPTORS,multi:true,useClass:HttpCallInterceptor}
   ],
   bootstrap: [AppComponent]
 })

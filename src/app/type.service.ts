@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data'
-import { Task } from './task.model';
+import { TypeTask } from './type-task.medel';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService  extends EntityCollectionServiceBase<Task>{
+export class TypeService  extends EntityCollectionServiceBase<TypeTask>{
 
   constructor(collectionFactory:EntityCollectionServiceElementsFactory) {
-    super('todo',collectionFactory);
+    super('type',collectionFactory);    
   }
 }

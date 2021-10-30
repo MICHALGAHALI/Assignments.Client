@@ -13,8 +13,9 @@
         </span>
     </div>
     <div>
-        <span class="p-input-icon-left">            
-            <p-dropdown   name="type" formControlName="type" placeholder="סוג משימה" optionLabel="name"  inputId="dropdown" [autoDisplayFirst]="false" [options]="countries"></p-dropdown>
+        <span class="p-input-icon-left" *ngIf="typeTask$ | async as types">            
+            <p-dropdown  [options]="types" name="type" formControlName="type" placeholder="סוג משימה" 
+            optionLabel="title"  inputId="dropdown" [autoDisplayFirst]="false" ></p-dropdown>
         </span>
     </div>
     <div>
@@ -24,12 +25,12 @@
     </div>
     <div>
         <span class="p-input-icon-left">            
-            <p-calendar inputId="calendar"  name="beginDate" formControlName="beginDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
+            <p-calendar inputId="calendar"  name="startDate" formControlName="startDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
         </span>
     </div>
     <div>
         <span class="p-input-icon-left">                        
-            <p-calendar inputId="calendar"  name="endDate" formControlName="endDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
+            <p-calendar inputId="calendar"  name="finishDate" formControlName="finishDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
         </span>
     </div>
     <div>
