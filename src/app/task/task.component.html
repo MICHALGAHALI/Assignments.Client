@@ -2,20 +2,20 @@
 
 <form [formGroup]="taskForm" (ngSubmit)="addTask()">
     <div>
-        <span class="p-input-icon-left">            
-            <input type="text" pInputText name="title" formControlName="Title" placeholder="שם משימה">         
-        </span>
-    </div>
-    <div>
-        <span class="p-input-icon-left">   
-            <p-checkbox formControlName="Completed" [binary]="true" inputId="binary1"></p-checkbox>
-            <label for="binary1">האם משימה חוזרת?</label>                    
+         <span class="p-input-icon-left">           
+            <input type="text" pInputText name="title" formControlName="Title" placeholder="שם משימה" >
+            <div *ngIf="taskForm.controls['Title'].dirty  && taskForm.controls['Title'].touched">
+                <small *ngIf="taskForm.controls['Title'].errors?.required" class="text-danger">שדה חובה</small>
+            </div>
         </span>
     </div>
     <div>
         <span class="p-input-icon-left" *ngIf="typeTask$ | async as types">            
             <p-dropdown  [options]="types" name="type" formControlName="Type" placeholder="סוג משימה" 
             optionLabel="title"  inputId="dropdown" [autoDisplayFirst]="false" ></p-dropdown>
+            <div *ngIf="taskForm.controls['Type'].dirty  && taskForm.controls['Type'].touched">
+                <small *ngIf="taskForm.controls['Type'].errors?.required" class="text-danger">שדה חובה</small>
+            </div>  
         </span>
     </div>
     <div>
@@ -23,16 +23,7 @@
             <input type="text" pInputText name="description" formControlName="Description" placeholder="תיאור משימה">         
         </span>
     </div>
-    <div>
-        <span class="p-input-icon-left">            
-            <p-calendar inputId="calendar"  name="startDate" formControlName="StartDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
-        </span>
-    </div>
-    <div>
-        <span class="p-input-icon-left">                        
-            <p-calendar inputId="calendar"  name="finishDate" formControlName="FinishDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
-        </span>
-    </div>
+    <app-range-dates formControlName="RangeDates"></app-range-dates>   
     <div>
         <span class="p-input-icon-left"> 
             <div class="p-field-checkbox">

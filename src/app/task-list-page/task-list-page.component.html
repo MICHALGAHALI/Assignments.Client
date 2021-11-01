@@ -11,9 +11,8 @@
             <th>תיאור המשימה</th>
             <th>תאריך התחלה</th>
             <th>תאריך סיום</th>
-            <th>האם משימה חוזרת</th>
-            <th> האם משימה הסתיימה</th>
-            <th>עדכון הסטאטוס</th>
+            <th>עדכון משימה חוזרת</th>
+            <th>עדכון משימה הסתיימה</th>
             <th>מחיקת משימה</th>            
       </tr>
     </ng-template>
@@ -28,11 +27,11 @@
         </td>
         <td>{{task.title}}</td>
         <td>{{task.description}}</td>
-        <td>{{task.startDate|date: 'dd/MM/yyyy'}}</td>
-        <td>{{task.finishDate|date: 'dd/MM/yyyy'}}</td>
-        <td>{{task.isRepeated}}</td>
-        <td>{{task.completed}}</td>
-        <td><p-checkbox name="groupname" [ngModel]="task.completed" (onChange)="changeCompletedTask($event,task)"
+        <td>{{task.rangeDates.startDate|date: 'dd/MM/yyyy'}}</td>
+        <td>{{task.rangeDates.finishDate|date: 'dd/MM/yyyy'}}</td>
+        <td><p-checkbox name="isRepeated" [ngModel]="task.isRepeated" (onChange)="changeIsRepeatedTask($event,task)"
+          [binary]="true"></p-checkbox></td>
+        <td><p-checkbox name="completed" [ngModel]="task.completed" (onChange)="changeCompletedTask($event,task)"
             [binary]="true"></p-checkbox></td>
         <td><button type="button" (click)="deleteTask(task.id)" pButton label="מחק משימה"></button></td>
       </tr>

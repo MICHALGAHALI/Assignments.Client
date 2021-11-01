@@ -13,7 +13,7 @@ import { TypeService } from '../type.service';
 })
 export class TaskListPageComponent implements OnInit {
   typeTask$: Observable<TypeTask[]>=this._typeService.entities$;
-  tasks$: Observable<any[]>=this._taskService.entities$;
+  tasks$: Observable<Task[]>=this._taskService.entities$;
   constructor(private _taskService:TaskService,
     private _typeService:TypeService,   ) {
   }
@@ -26,11 +26,19 @@ export class TaskListPageComponent implements OnInit {
   {
     this._taskService.delete(taskId)
   }
+  //update isRepeated field
+  changeIsRepeatedTask(event:any,task:Task) {
+    var clone = Object.assign({}, task);
+    clone.isRepeated=!clone.isRepeated;
+    this._taskService.update(clone);   
+  }
+  //update completed field
   changeCompletedTask(event:any,task:Task) {
     var clone = Object.assign({}, task);
     clone.completed=!clone.completed;
     this._taskService.update(clone);   
   }
+  //update type field
   changeTypeTask(event:any,task:Task){
     var clone = Object.assign({}, task);
     clone.type=event.value;

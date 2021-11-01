@@ -1,0 +1,19 @@
+<form [formGroup]="rangeDates" title="טווח תאריכים" daterange>
+<div>
+     <span class="p-input-icon-left">            
+         <p-calendar inputId="calendar"  name="startDate" formControlName="StartDate" [showIcon]="true" placeholder="התחלת משימה"></p-calendar>
+         <div *ngIf="rangeDates.controls['StartDate'].dirty  && rangeDates.controls['StartDate'].touched">
+            <small *ngIf="rangeDates.controls['StartDate'].errors?.required" class="text-danger">שדה חובה</small>
+        </div>  
+     </span>
+ </div>
+ <div>
+     <span class="p-input-icon-left">                        
+         <p-calendar inputId="calendar"  name="finishDate" formControlName="FinishDate" [showIcon]="true" placeholder="סיום משימה"></p-calendar>
+     </span>
+ </div>
+ <div *ngIf="rangeDates.dirty  && rangeDates.touched">
+    <small *ngIf="rangeDates.errors?.dateRenge" class="text-danger">תאריך התחלה וסיום לא תואם</small>
+</div>    
+
+</form>

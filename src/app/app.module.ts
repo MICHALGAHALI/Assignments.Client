@@ -20,11 +20,15 @@ import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown'
 import { HttpCallInterceptor } from './http-call.interceptor';
+import { RangeDateComponent } from './shared/controls/range-date.component';
+import { dateGroupDirective } from './shared/controls/date-group/date-group.Directive';
 @NgModule({
   declarations: [
     AppComponent,
     TaskListPageComponent,
-    TaskComponent
+    TaskComponent,
+    RangeDateComponent,
+    dateGroupDirective
   ],
   imports: [
     BrowserModule,
