@@ -35,6 +35,7 @@
     </div>
     <br/>
     <button pButton type="submit" [disabled]="(taskForm.status == 'PENDING' ||taskForm.status=='INVALID')"> שמור </button>
+    {{resultServer$|async|json}}
   </form> 
     
 
