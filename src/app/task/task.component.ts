@@ -39,9 +39,23 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
     this._typeService.getAll();
   }
+  convertDateToString(date:Date)
+  {
+    var y  =  date.getFullYear();
+    var m  =  ("0" + (date.getMonth() + 1)).slice(-2);
+    var d  =  ("0" + (date.getDate())).slice(-2);
+    var h  =  ("0" + (date.getHours())).slice(-2);
+    var mi =  ("0" + (date.getMinutes())).slice(-2);
+    var s  =  ("0" + (date.getSeconds())).slice(-2);
+    return y + '-' + m + '-' + d + 'T' + h + ':' + mi + ':' + s;
+  }
   addTask() {
-
-    this.resultServer$ = this._taskService.add(this.taskForm.value)
+    let newTask = Object.assign({}, this.taskForm.value);
+    let FinishDate:Date= this.taskForm.controls["RangeDates"].value.FinishDate;
+    let StartDate:Date= this.taskForm.controls["RangeDates"].value.StartDate;
+    newTask.RangeDates.FinishDate=this.convertDateToString(FinishDate)
+    newTask.RangeDates.StartDate=this.convertDateToString(StartDate)
+    this.resultServer$ = this._taskService.add(newTask)
       .pipe(
         map((event) => {
           setTimeout(() => {

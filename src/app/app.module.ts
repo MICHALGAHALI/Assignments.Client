@@ -21,7 +21,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown'
 import { HttpCallInterceptor } from './http-call.interceptor';
 import { RangeDateComponent } from './shared/controls/range-date.component';
-import { dateGroupDirective } from './shared/controls/date-group/date-group.Directive';
+import { dateGroupDirective } from './shared/controls/date-group/date-group.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,6 @@ import { dateGroupDirective } from './shared/controls/date-group/date-group.Dire
         'todo': {},
         'type':{}
       },
-      //pluralNames:{'Task':'TODO'}
     }),
     TableModule,
     ButtonModule,
@@ -56,7 +56,7 @@ import { dateGroupDirective } from './shared/controls/date-group/date-group.Dire
     CalendarModule,
     DropdownModule
   ],
-  providers: [//https://jsonplaceholder.typicode.com/
+  providers: [
     {provide:DefaultDataServiceConfig,useValue:{root:'http://localhost:5000/api/'}},
     {provide:HTTP_INTERCEPTORS,multi:true,useClass:HttpCallInterceptor}
   ],
